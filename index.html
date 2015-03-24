@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=775"/> <!-- iPhone -->
     
     <style type="text/css">
-			body, html { background: #fff; margin:0px; padding:0px; border:0px; font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; font-size:16px; line-height:150%; color:#333; }
+      body, html { background: #fff; margin:0px; padding:0px; border:0px; font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; font-size:16px; line-height:150%; color:#333; }
       pre { font-size: 10px; }
       a { color:#333; text-decoration: underline; padding: 1px 2px;}
       a:hover { color: #666; background: none; }
@@ -48,14 +48,19 @@
       li.note blockquote:before { content:"“"; font-size:600%; line-height:1em;color:#999; position:absolute;left:0;top:0; }
       .regular_post_body img { max-width: 100%; }
       .search_query { font-style: italic; }
+
       {CustomCSS}
+
     </style>
+
     {block:Description}
       <meta name="description" content="{MetaDescription}" />
     {/block:Description}
+
   </head>
   <body>
     <div class="wrapper">
+
       <div class="header">
         <h1>
           <a href="/" class="title">{Title}</a>
@@ -65,6 +70,7 @@
       </div>
 
       <div class="main">
+
         {block:SearchPage}
           <div class="post">
             <div class="datetime">
@@ -87,6 +93,7 @@
                 {LikeButton}
               {/block:Date}
             </div>
+
 
             {block:Regular}
               {block:Title}<h2 style="border-bottom:none;font-size:1.5em;">{Title}</h2>{/block:Title}
@@ -169,11 +176,7 @@
             {block:Pages}<a href="{URL}">{Label}</a>&nbsp;&nbsp;&nbsp;
           {/block:Pages}
         </div>
-
-        <div class="navcenter">
-          イジりやすいテーマ <a href="http://langer.tumblr.com">langer</a>, イジリました <a href="http://blog.toihrk.me">toihrk</a>
-        </div>
-
+        
         <div class="navcenter">
           母なるインターネットの海 <a href="http://www.tumblr.com">Tumblr</a>.
         </div>
