@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>
+    <link rel="icon" href="{Favicon}"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="{RSS}"/>
+    <meta name="viewport" content="width=775"/> <!-- iPhone -->
+    
+    <style type="text/css">
+			body, html { background: #fff; margin:0px; padding:0px; border:0px; font-family: "Hiragino Kaku Gothic ProN", Meiryo, sans-serif; font-size:16px; line-height:150%; color:#333; }
+      pre { font-size: 10px; }
+      a { color:#333; text-decoration: underline; padding: 1px 2px;}
+      a:hover { color: #666; background: none; }
+      a.title {text-decoration: none;}
+      h1 { color:#666; font-weight: normal; margin-bottom:0px; font-size:2em;}
+      h2 { color:#666; font-weight: normal; margin-bottom:0px; border-bottom:2px dotted #666; padding:4px 6px; font-size:1.2em;}
+      h3 { color:#666; font-weight: normal !important; margin-bottom:0px; font-size:1.125em;}
+      h4 { color:#666; font-weight: normal; margin-bottom:0px;font-size:1em; }
+      img { background: #fff !important; border: 1px solid #999; padding: 5px; margin: 0px; }
+      img a { text-decoration: none !important; background: #fff !important; margin: 0px; }
+      input { border: 1px solid #999; }
+      .photo a, { text-decoration: none !important; background: #fff !important; }
+      .header { margin-bottom: 20px; }
+      .wrapper { width: 520px; margin: auto; }
+      .main { margin: 50px 0px; }
+      .datetime { font-size: 12px; line-height: 150%; color: #666; position:relative; float:left; margin-left:-250px; padding-right: 25px; border-right: 1px solid #999; width: 200px; text-align: right; clear: both; }
+      .navleft { font-size: 12px; position: relative; float: left; }
+      .navright { font-size: 12px; position: relative; float: right; }
+      .navcenter { font-size: 12px; text-align:center; width: 500px; }
+      .datetime a { color: #666; }
+      .post { padding-bottom: 30px; }
+      .post .link a { border-radius: 12px; padding: 10px; background-color: #ddd; text-decoration: none; }
+      .post blockquote { padding:1em 1em 1em 3em; position:relative; background-color:#ddd; }
+      .post blockquote:before { content:"“"; font-size:600%; line-height:1em; color:#999; position: absolute; left: 0; top: 0; }
+      .short_quote { margin: 0px; padding: 0px; font-size:62px; line-height: 110%; color: #999; } 
+      .medium_quote { margin: 0px; padding: 0px; font-size:36px; line-height: 115%; color: #666; } 
+      .long_quote { margin: 0px; padding: 0px; font-size:24px; line-height: 130%; color: #666; } 
+      ol.notes { list-style-type: none; padding-left: 0px; }
+      .notes li {padding: 5px 0;}
+      .notes li span {display: block; float:left; padding-left:10px;}
+      a .notes { text-decoration: none !important; background: none; } 
+      .notes a { text-decoration: none !important; background: none; } 
+      img .notes { margin: 0px; padding: 3px;border-radius:24px;-webkit-border-radius:24px;-moz-border-radius:24px; } 
+      .notes img { margin: 0px; padding: 3px;border-radius:24px;-webkit-border-radius:24px;-moz-border-radius:24px; float:left;}
+      .notes span {margin-top: 0px;}
+      span .notes {margin-top: 0px;}
+      li.note blockquote {margin: 5px 0 0 50px; padding:1em 1em 1em 3em; position: relative; }
+      li.note blockquote:before { content:"“"; font-size:600%; line-height:1em;color:#999; position:absolute;left:0;top:0; }
+      .regular_post_body img { max-width: 100%; }
+      .search_query { font-style: italic; }
+      {CustomCSS}
+    </style>
+    {block:Description}
+      <meta name="description" content="{MetaDescription}" />
+    {/block:Description}
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1>
+          <a href="/" class="title">{Title}</a>
+        </h1>
+
+        <p>{Description}</p>
+      </div>
+
+      <div class="main">
+        {block:SearchPage}
+          <div class="post">
+            <div class="datetime">
+              {lang:SearchResultCount results}
+            </div>
+            <h2>{lang:Search results for SearchQuery 2}</h2>
+          </div>
+        {/block:SearchPage}
+
+
+        {block:Posts}
+          <div class="post">
+            <div class="datetime">
+              {block:Date}
+                <a href="{Permalink}">{block:NewDayDate}{Year}/{MonthNumberWithZero}/{DayOfMonthWithZero}{/block:NewDayDate} {24Hour}:{Minutes}</a>
+                <br />
+                {block:NoteCount} {NoteCountWithLabel}<br />{/block:NoteCount}
+                {block:RebloggedFrom}{lang:Reblogged from ReblogRootName 2}<br />{/block:RebloggedFrom}
+                <br />
+                {LikeButton}
+              {/block:Date}
+            </div>
+
+            {block:Regular}
+              {block:Title}<h2 style="border-bottom:none;font-size:1.5em;">{Title}</h2>{/block:Title}
+              <p style="regular_post_body">{Body}</p>
+            {/block:Regular}
+
+            {block:Photo}
+              <span class="photo">{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}" title="{PhotoAlt}">{LinkCloseTag}</span>
+              <p>{Caption}</p>
+            {/block:Photo}
+
+            {block:Quote}
+              <p><span class="{Length}_quote">{Quote}</span></p>
+              {block:Source}<p>&mdash;&nbsp;{Source}</p>{/block:Source}
+            {/block:Quote}
+
+            {block:Video}
+              {Video-500}
+              <p>{Caption}</p>
+            {/block:Video}
+
+            {block:Audio}
+              {AudioPlayerGrey}
+              <p>{Caption}</p>
+            {/block:Audio}
+
+            {block:Link}
+              <h2 class="link" style="border-bottom:none;font-size:1.5em;">>>&nbsp;<a href="{URL}" {Target}>{Name}</a></h2>
+              {block:Description}<p>{Description}</p>{/block:Description}
+            {/block:Link}
+
+            {block:Conversation}
+              {block:Title}<h2 style="border-bottom:none;font-size:1.5em;">{Title}</h2>{/block:Title}
+              <p>
+                {block:Lines}
+                  <div style="padding:10px;">
+                    {block:Label}<strong>{Label}</strong>{/block:Label} {Line}<br />
+                  </div>
+               {/block:Lines}
+              </p>
+            {/block:Conversation}
+          </div>
+        {/block:Posts}
+
+
+        {block:PermalinkPage}
+          {block:PostNotes}
+            <div class="post">
+              <h3>Notes</h3>
+              <p>{PostNotes}</p>
+            </div>
+          {/block:PostNotes}
+        {/block:PermalinkPage}
+
+
+        {block:Pagination}
+          {block:NextPage}
+            <div class="navleft">
+              <a href="{NextPage}">Next</a>
+            </div>
+          {/block:NextPage}
+
+          {block:PreviousPage}
+            <div class="navright">
+              <a href="{PreviousPage}">Previous</a>
+            </div>
+          {/block:PreviousPage}
+
+          <div class="navcenter">
+            <span class="long_quote">{CurrentPage}</span>
+            / {TotalPages}
+          </div>
+
+        {/block:Pagination}
+      </div>
+
+      <div class="post">
+        <div class="navcenter">
+          {block:HasPages}
+            {block:Pages}<a href="{URL}">{Label}</a>&nbsp;&nbsp;&nbsp;
+          {/block:Pages}
+        </div>
+
+        <div class="navcenter">
+          イジりやすいテーマ <a href="http://langer.tumblr.com">langer</a>, イジリました <a href="http://blog.toihrk.me">toihrk</a>
+        </div>
+
+        <div class="navcenter">
+          母なるインターネットの海 <a href="http://www.tumblr.com">Tumblr</a>.
+        </div>
+
+        <div class="navcenter">
+        {CopyrightYears}
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
